@@ -1,0 +1,26 @@
+{
+  "name": "tomcat",
+  "description": "Install and configure Jenkins",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "my_docker": {
+      "image": "tomcat",
+      "container": "tomcat",
+      "ports": {
+        "internal": 8080,
+        "external": 8080
+      },
+      "files": "/tmp/foo.cfg:/tmp/foo.cfg"
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[my_docker]"
+  ],
+  "env_run_lists": {
+
+  }
+}

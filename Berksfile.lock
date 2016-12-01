@@ -1,0 +1,11 @@
+DEPENDENCIES
+  docker (~> 2.0)
+  my_docker
+    path: chef/cookbooks/my_docker
+
+GRAPH
+  compat_resource (12.16.2)
+  docker (2.13.0)
+    compat_resource (>= 12.16.2)
+  my_docker (0.1.0)
+    docker (>= 0.0.0)
