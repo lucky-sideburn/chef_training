@@ -1,13 +1,13 @@
 # Training Vagrant,Chef,Docker #
 ## Argomenti training on the job #
 
-### Argomenti ###
-- overview tool devops
-- overview metodologie devops
+### Argomenti ##d#
+- overview tool evops
+- overview metodologie Devops
 - overview risorsa Chef Docker
 
 ### Cosa realizzeremo? ###
-Effetturemo il deploy della seguente instrastruttura
+Effettueremo il deploy della seguente piattaforma
 - Progetto Vagrant multi-nodo (nodeA,nodeB,nodeC)
 - nodeA: frontend HA-Proxy ( url: training.cerved.com )
 - nodeB: backend docker (container tomcat)
@@ -18,7 +18,7 @@ Effetturemo il deploy della seguente instrastruttura
 2. GitHub (code repo)
 3. Cookbook Chef comunitari (supermaket Chef)
 4. Docker (container engine)
-5. Ha-Proxy (loadbalancer)
+5. Ha-Proxy (load-balancer)
 6. Berkshelf (gestore dipendenze cookbook)
 7. ChefDK (toolkit chef)
 8. Virtualbox (hypervisor)
