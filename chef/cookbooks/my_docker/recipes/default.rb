@@ -17,16 +17,19 @@ docker_image node['my_docker']['image'] do
   action :pull
 end
 
-ports = "#{node['my_docker']['ports']['internal']}:#{node['my_docker']['ports']['external']}"
+node['my_docker']['containers'].each do |mycontainer|
 
+  docker_container mycontainer['name'] do
+    tag 'latest'
+    repo node['my_docker']['image']
+    port mycontainer['ports']
+    binds [ mycontainer['files'] ]
+    host_name mycontainer['name']
+    domain_name 'dockers01.cerved.com'
+    env 'FOO=bar'
+    subscribes :redeploy, "docker_image[#{node['my_docker']['image']}]"
+  end
 
-# Run container exposing ports
-docker_container node['my_docker']['container'] do
-  tag 'latest'
-  port ports
-  binds [ node['my_docker']['files'] ]
-  host_name 'dockers01.container'
-  domain_name 'dockers01.cerved.com'
-  env 'FOO=bar'
-  subscribes :redeploy, "docker_image[#{node['my_docker']['image']}]"
 end
+
+

@@ -7,13 +7,21 @@
   },
   "override_attributes": {
     "my_docker": {
+
       "image": "tomcat",
-      "container": "tomcat",
-      "ports": {
-        "internal": 8080,
-        "external": 8080
-      },
-      "files": "/vagrant/webapps:/usr/local/tomcat/webapps"
+
+      "containers": [
+        {
+          "name": "tomcat1",
+          "ports": "8080:8080",
+          "files": "/vagrant/webapps:/usr/local/tomcat/webapps"
+        },
+        {
+          "name": "tomcat2",
+          "ports": "8082:8080",
+          "files": "/vagrant/webapps:/usr/local/tomcat/webapps"
+        }
+      ]
     }
   },
   "chef_type": "role",
