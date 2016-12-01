@@ -1,9 +1,31 @@
 {
   "name": "dockers01",
+  "override": {
+    "my_docker": {
+      "image": "tomcat",
+      "container": "tomcat",
+      "ports": {
+        "internal": 8080,
+        "external": 8080
+      },
+      "files": "/vagrant/webapps:/usr/local/tomcat/webapps"
+    }
+  },
   "normal": {
     "tags": [
 
     ]
+  },
+  "default": {
+    "my_docker": {
+      "image": "mydockerimage",
+      "container": "mydockercontainer",
+      "ports": {
+        "internal": "80",
+        "external": "80"
+      },
+      "files": "/some/local/files/:/etc/nginx/conf.d"
+    }
   },
   "automatic": {
     "cpu": {
@@ -75,13 +97,13 @@
     "filesystem": {
       "/dev/mapper/centos-root": {
         "kb_size": "52403200",
-        "kb_used": "1382488",
-        "kb_available": "51020712",
-        "percent_used": "3%",
+        "kb_used": "1949740",
+        "kb_available": "50453460",
+        "percent_used": "4%",
         "mount": "/",
         "total_inodes": "52428800",
-        "inodes_used": "44140",
-        "inodes_available": "52384660",
+        "inodes_used": "45093",
+        "inodes_available": "52383707",
         "inodes_percent_used": "1%",
         "fs_type": "xfs",
         "mount_options": [
@@ -101,8 +123,8 @@
         "percent_used": "0%",
         "mount": "/dev",
         "total_inodes": "233078",
-        "inodes_used": "329",
-        "inodes_available": "232749",
+        "inodes_used": "342",
+        "inodes_available": "232736",
         "inodes_percent_used": "1%",
         "fs_type": "devtmpfs",
         "mount_options": [
@@ -181,9 +203,9 @@
       },
       "vagrant": {
         "kb_size": "243915264",
-        "kb_used": "211008936",
-        "kb_available": "32906328",
-        "percent_used": "87%",
+        "kb_used": "212756964",
+        "kb_available": "31158300",
+        "percent_used": "88%",
         "mount": "/vagrant",
         "total_inodes": "1000",
         "inodes_used": "0",
@@ -192,9 +214,9 @@
       },
       "v-csr-8f762198b": {
         "kb_size": "243915264",
-        "kb_used": "211008936",
-        "kb_available": "32906328",
-        "percent_used": "87%",
+        "kb_used": "212756964",
+        "kb_available": "31158300",
+        "percent_used": "88%",
         "mount": "/tmp/vagrant-chef/1f2a2c5b0785596fa989818061fc9af0/roles",
         "total_inodes": "1000",
         "inodes_used": "0",
@@ -209,9 +231,9 @@
       },
       "v-csn-0d66c3a12": {
         "kb_size": "243915264",
-        "kb_used": "211008936",
-        "kb_available": "32906328",
-        "percent_used": "87%",
+        "kb_used": "212756964",
+        "kb_available": "31158300",
+        "percent_used": "88%",
         "mount": "/tmp/vagrant-chef/c2d30df281037602653b4deb245798c1/nodes",
         "total_inodes": "1000",
         "inodes_used": "0",
@@ -226,9 +248,9 @@
       },
       "v-csc-e8c15ffc8": {
         "kb_size": "243915264",
-        "kb_used": "211008936",
-        "kb_available": "32906328",
-        "percent_used": "87%",
+        "kb_used": "212756964",
+        "kb_available": "31158300",
+        "percent_used": "88%",
         "mount": "/tmp/vagrant-chef/0d094e28dbf026ed79ca55726f6eaaf6/cookbooks",
         "total_inodes": "1000",
         "inodes_used": "0",
@@ -243,9 +265,9 @@
       },
       "v-csdb-1954f2e9a": {
         "kb_size": "243915264",
-        "kb_used": "211008936",
-        "kb_available": "32906328",
-        "percent_used": "87%",
+        "kb_used": "212756964",
+        "kb_available": "31158300",
+        "percent_used": "88%",
         "mount": "/tmp/vagrant-chef/e1cad320ccc9cde04d701476884066c8/data_bags",
         "total_inodes": "1000",
         "inodes_used": "0",
@@ -260,9 +282,9 @@
       },
       "v-cse-c8e748378": {
         "kb_size": "243915264",
-        "kb_used": "211008936",
-        "kb_available": "32906328",
-        "percent_used": "87%",
+        "kb_used": "212756964",
+        "kb_available": "31158300",
+        "percent_used": "88%",
         "mount": "/tmp/vagrant-chef/61c7969d12f08aa51d709aeec81f95f0/environments",
         "total_inodes": "1000",
         "inodes_used": "0",
@@ -435,6 +457,14 @@
         "fs_type": "swap",
         "uuid": "39e146bb-5dd4-49a8-bd2a-79c75dcfca03"
       },
+      "/dev/loop0": {
+        "fs_type": "xfs",
+        "uuid": "f7943cf1-bb87-4d35-bae1-028ca2fd9f04"
+      },
+      "/dev/mapper/docker-253:0-68136879-22cbc91e9457cc164c30f75e8d9a6af5e7a81cb9d79faded268b77df11ebacf8": {
+        "fs_type": "xfs",
+        "uuid": "f7943cf1-bb87-4d35-bae1-028ca2fd9f04"
+      },
       "rootfs": {
         "mount": "/",
         "fs_type": "rootfs",
@@ -451,6 +481,91 @@
       "processor": "x86_64",
       "os": "GNU/Linux",
       "modules": {
+        "xt_nat": {
+          "size": "12681",
+          "refcount": "1"
+        },
+        "veth": {
+          "size": "13365",
+          "refcount": "0"
+        },
+        "ipt_MASQUERADE": {
+          "size": "12678",
+          "refcount": "2"
+        },
+        "nf_nat_masquerade_ipv4": {
+          "size": "13412",
+          "refcount": "1"
+        },
+        "iptable_nat": {
+          "size": "12875",
+          "refcount": "1"
+        },
+        "nf_conntrack_ipv4": {
+          "size": "14862",
+          "refcount": "2"
+        },
+        "nf_defrag_ipv4": {
+          "size": "12729",
+          "refcount": "1"
+        },
+        "nf_nat_ipv4": {
+          "size": "14115",
+          "refcount": "1"
+        },
+        "xt_addrtype": {
+          "size": "12635",
+          "refcount": "2"
+        },
+        "iptable_filter": {
+          "size": "12810",
+          "refcount": "1"
+        },
+        "xt_conntrack": {
+          "size": "12760",
+          "refcount": "1"
+        },
+        "nf_nat": {
+          "size": "26146",
+          "refcount": "3"
+        },
+        "nf_conntrack": {
+          "size": "105745",
+          "refcount": "5"
+        },
+        "bridge": {
+          "size": "119562",
+          "refcount": "0",
+          "version": "2.3"
+        },
+        "stp": {
+          "size": "12976",
+          "refcount": "1"
+        },
+        "llc": {
+          "size": "14552",
+          "refcount": "2"
+        },
+        "dm_thin_pool": {
+          "size": "65489",
+          "refcount": "2"
+        },
+        "dm_persistent_data": {
+          "size": "67216",
+          "refcount": "1"
+        },
+        "dm_bio_prison": {
+          "size": "15907",
+          "refcount": "1"
+        },
+        "dm_bufio": {
+          "size": "28011",
+          "refcount": "1"
+        },
+        "loop": {
+          "size": "28121",
+          "refcount": "4"
+        },
         "vboxsf": {
           "size": "39741",
           "refcount": "6",
@@ -552,15 +667,15 @@
         },
         "ip_tables": {
           "size": "27240",
-          "refcount": "0"
+          "refcount": "2"
         },
         "xfs": {
           "size": "939714",
-          "refcount": "3"
+          "refcount": "4"
         },
         "libcrc32c": {
           "size": "12644",
-          "refcount": "1"
+          "refcount": "2"
         },
         "sd_mod": {
           "size": "45497",
@@ -629,7 +744,7 @@
         },
         "dm_mod": {
           "size": "113292",
-          "refcount": "11"
+          "refcount": "19"
         }
       }
     },
@@ -646,25 +761,25 @@
         "surplus": "0"
       },
       "total": "1884188kB",
-      "free": "1466260kB",
-      "buffers": "1072kB",
-      "cached": "190836kB",
-      "active": "190064kB",
-      "inactive": "149828kB",
-      "dirty": "40kB",
+      "free": "503380kB",
+      "buffers": "1984kB",
+      "cached": "909028kB",
+      "active": "549868kB",
+      "inactive": "682096kB",
+      "dirty": "60kB",
       "writeback": "0kB",
-      "anon_pages": "148036kB",
-      "mapped": "27684kB",
-      "slab": "42160kB",
-      "slab_reclaimable": "19328kB",
-      "slab_unreclaim": "22832kB",
-      "page_tables": "5536kB",
+      "anon_pages": "320964kB",
+      "mapped": "65872kB",
+      "slab": "102592kB",
+      "slab_reclaimable": "74276kB",
+      "slab_unreclaim": "28316kB",
+      "page_tables": "6316kB",
       "nfs_unstable": "0kB",
       "bounce": "0kB",
       "commit_limit": "1990664kB",
-      "committed_as": "460448kB",
+      "committed_as": "899972kB",
       "vmalloc_total": "34359738367kB",
-      "vmalloc_used": "11540kB",
+      "vmalloc_used": "12688kB",
       "vmalloc_chunk": "34359717372kB",
       "hugepage_size": "2048kB"
     },
@@ -851,6 +966,9 @@
             }
           },
           "state": "up",
+          "arp": {
+            "192.168.50.1": "0a:00:27:00:00:04"
+          },
           "routes": [
             {
               "destination": "169.254.0.0/16",
@@ -888,6 +1006,105 @@
             "current_rx_jumbo": 0,
             "current_tx": 256
           }
+        },
+        "docker0": {
+          "type": "docker",
+          "number": "0",
+          "mtu": "1500",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "encapsulation": "Ethernet",
+          "addresses": {
+            "02:42:E2:6F:D0:D9": {
+              "family": "lladdr"
+            },
+            "172.17.0.1": {
+              "family": "inet",
+              "prefixlen": "16",
+              "netmask": "255.255.0.0",
+              "scope": "Global"
+            },
+            "fe80::42:e2ff:fe6f:d0d9": {
+              "family": "inet6",
+              "prefixlen": "64",
+              "scope": "Link",
+              "tags": [
+
+              ]
+            }
+          },
+          "state": "up",
+          "arp": {
+            "172.17.0.2": "02:42:ac:11:00:02"
+          },
+          "routes": [
+            {
+              "destination": "172.17.0.0/16",
+              "family": "inet",
+              "scope": "link",
+              "proto": "kernel",
+              "src": "172.17.0.1"
+            },
+            {
+              "destination": "fe80::/64",
+              "family": "inet6",
+              "metric": "256",
+              "proto": "kernel"
+            }
+          ],
+          "neighbour_inet6": {
+            "fe80::42:acff:fe11:2": "02:42:ac:11:00:02"
+          },
+          "ring_params": {
+
+          }
+        },
+        "vethfe45b08": {
+          "type": "vethfe45b0",
+          "number": "8",
+          "mtu": "1500",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST",
+            "UP",
+            "LOWER_UP"
+          ],
+          "encapsulation": "Ethernet",
+          "addresses": {
+            "42:7D:22:15:34:D0": {
+              "family": "lladdr"
+            },
+            "fe80::407d:22ff:fe15:34d0": {
+              "family": "inet6",
+              "prefixlen": "64",
+              "scope": "Link",
+              "tags": [
+
+              ]
+            }
+          },
+          "state": "up",
+          "routes": [
+            {
+              "destination": "fe80::/64",
+              "family": "inet6",
+              "metric": "256",
+              "proto": "kernel"
+            }
+          ],
+          "link_speed": 10000,
+          "duplex": "Full",
+          "port": "Twisted Pair",
+          "transceiver": "internal",
+          "auto_negotiation": "off",
+          "mdi_x": "Unknown",
+          "ring_params": {
+
+          }
         }
       },
       "default_interface": "enp0s3",
@@ -898,15 +1115,15 @@
         "interfaces": {
           "lo": {
             "rx": {
-              "bytes": "0",
-              "packets": "0",
+              "bytes": "1195",
+              "packets": "18",
               "errors": "0",
               "drop": "0",
               "overrun": "0"
             },
             "tx": {
-              "bytes": "0",
-              "packets": "0",
+              "bytes": "1195",
+              "packets": "18",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
@@ -916,16 +1133,16 @@
           "enp0s3": {
             "tx": {
               "queuelen": "1000",
-              "bytes": "354980",
-              "packets": "2344",
+              "bytes": "10717470",
+              "packets": "157132",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
               "collisions": "0"
             },
             "rx": {
-              "bytes": "415296",
-              "packets": "3904",
+              "bytes": "556186017",
+              "packets": "531147",
               "errors": "0",
               "drop": "0",
               "overrun": "0"
@@ -934,19 +1151,53 @@
           "enp0s8": {
             "tx": {
               "queuelen": "1000",
-              "bytes": "1586",
-              "packets": "21",
+              "bytes": "115035",
+              "packets": "119",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
               "collisions": "0"
             },
             "rx": {
-              "bytes": "0",
-              "packets": "0",
+              "bytes": "39912",
+              "packets": "368",
               "errors": "0",
               "drop": "0",
               "overrun": "0"
+            }
+          },
+          "docker0": {
+            "rx": {
+              "bytes": "83763",
+              "packets": "83",
+              "errors": "0",
+              "drop": "0",
+              "overrun": "0"
+            },
+            "tx": {
+              "bytes": "10713",
+              "packets": "111",
+              "errors": "0",
+              "drop": "0",
+              "carrier": "0",
+              "collisions": "0"
+            }
+          },
+          "vethfe45b08": {
+            "rx": {
+              "bytes": "84925",
+              "packets": "83",
+              "errors": "0",
+              "drop": "0",
+              "overrun": "0"
+            },
+            "tx": {
+              "bytes": "11451",
+              "packets": "118",
+              "errors": "0",
+              "drop": "0",
+              "carrier": "0",
+              "collisions": "0"
             }
           }
         }
@@ -954,7 +1205,7 @@
     },
     "ipaddress": "10.0.2.15",
     "macaddress": "08:00:27:F7:90:B3",
-    "ip6address": "fe80::a00:27ff:fe6b:a4f3",
+    "ip6address": "fe80::42:e2ff:fe6f:d0d9",
     "os": "linux",
     "os_version": "3.10.0-327.22.2.el7.x86_64",
     "lsb": {
@@ -963,10 +1214,10 @@
     "platform": "centos",
     "platform_version": "7.2.1511",
     "platform_family": "rhel",
-    "uptime_seconds": 150,
-    "uptime": "2 minutes 30 seconds",
-    "idletime_seconds": 123,
-    "idletime": "2 minutes 03 seconds",
+    "uptime_seconds": 5789,
+    "uptime": "1 hours 36 minutes 29 seconds",
+    "idletime_seconds": 5604,
+    "idletime": "1 hours 33 minutes 24 seconds",
     "virtualization": {
       "systems": {
         "vbox": "guest"
@@ -1605,6 +1856,18 @@
           "members": [
 
           ]
+        },
+        "cgred": {
+          "gid": 993,
+          "members": [
+
+          ]
+        },
+        "docker": {
+          "gid": 992,
+          "members": [
+
+          ]
         }
       }
     },
@@ -1617,12 +1880,12 @@
       "by_device": {
         "/dev/mapper/centos-root": {
           "kb_size": "52403200",
-          "kb_used": "1382488",
-          "kb_available": "51020712",
-          "percent_used": "3%",
+          "kb_used": "1949740",
+          "kb_available": "50453460",
+          "percent_used": "4%",
           "total_inodes": "52428800",
-          "inodes_used": "44140",
-          "inodes_available": "52384660",
+          "inodes_used": "45093",
+          "inodes_available": "52383707",
           "inodes_percent_used": "1%",
           "fs_type": "xfs",
           "mount_options": [
@@ -1644,8 +1907,8 @@
           "kb_available": "932312",
           "percent_used": "0%",
           "total_inodes": "233078",
-          "inodes_used": "329",
-          "inodes_available": "232749",
+          "inodes_used": "342",
+          "inodes_available": "232736",
           "inodes_percent_used": "1%",
           "fs_type": "devtmpfs",
           "mount_options": [
@@ -1736,9 +1999,9 @@
         },
         "vagrant": {
           "kb_size": "243915264",
-          "kb_used": "211008936",
-          "kb_available": "32906328",
-          "percent_used": "87%",
+          "kb_used": "212756964",
+          "kb_available": "31158300",
+          "percent_used": "88%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -1749,9 +2012,9 @@
         },
         "v-csr-8f762198b": {
           "kb_size": "243915264",
-          "kb_used": "211008936",
-          "kb_available": "32906328",
-          "percent_used": "87%",
+          "kb_used": "212756964",
+          "kb_available": "31158300",
+          "percent_used": "88%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -1768,9 +2031,9 @@
         },
         "v-csn-0d66c3a12": {
           "kb_size": "243915264",
-          "kb_used": "211008936",
-          "kb_available": "32906328",
-          "percent_used": "87%",
+          "kb_used": "212756964",
+          "kb_available": "31158300",
+          "percent_used": "88%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -1787,9 +2050,9 @@
         },
         "v-csc-e8c15ffc8": {
           "kb_size": "243915264",
-          "kb_used": "211008936",
-          "kb_available": "32906328",
-          "percent_used": "87%",
+          "kb_used": "212756964",
+          "kb_available": "31158300",
+          "percent_used": "88%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -1806,9 +2069,9 @@
         },
         "v-csdb-1954f2e9a": {
           "kb_size": "243915264",
-          "kb_used": "211008936",
-          "kb_available": "32906328",
-          "percent_used": "87%",
+          "kb_used": "212756964",
+          "kb_available": "31158300",
+          "percent_used": "88%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -1825,9 +2088,9 @@
         },
         "v-cse-c8e748378": {
           "kb_size": "243915264",
-          "kb_used": "211008936",
-          "kb_available": "32906328",
-          "percent_used": "87%",
+          "kb_used": "212756964",
+          "kb_available": "31158300",
+          "percent_used": "88%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -2052,6 +2315,30 @@
 
           ]
         },
+        "/dev/loop0": {
+          "fs_type": "xfs",
+          "uuid": "f7943cf1-bb87-4d35-bae1-028ca2fd9f04",
+          "mounts": [
+
+          ]
+        },
+        "/dev/mapper/docker-253:0-68136879-pool": {
+          "mounts": [
+
+          ]
+        },
+        "/dev/mapper/docker-253:0-68136879-22cbc91e9457cc164c30f75e8d9a6af5e7a81cb9d79faded268b77df11ebacf8": {
+          "fs_type": "xfs",
+          "uuid": "f7943cf1-bb87-4d35-bae1-028ca2fd9f04",
+          "mounts": [
+
+          ]
+        },
+        "/dev/loop1": {
+          "mounts": [
+
+          ]
+        },
         "rootfs": {
           "fs_type": "rootfs",
           "mount_options": [
@@ -2065,12 +2352,12 @@
       "by_mountpoint": {
         "/": {
           "kb_size": "52403200",
-          "kb_used": "1382488",
-          "kb_available": "51020712",
-          "percent_used": "3%",
+          "kb_used": "1949740",
+          "kb_available": "50453460",
+          "percent_used": "4%",
           "total_inodes": "52428800",
-          "inodes_used": "44140",
-          "inodes_available": "52384660",
+          "inodes_used": "45093",
+          "inodes_available": "52383707",
           "inodes_percent_used": "1%",
           "fs_type": "rootfs",
           "mount_options": [
@@ -2088,8 +2375,8 @@
           "kb_available": "932312",
           "percent_used": "0%",
           "total_inodes": "233078",
-          "inodes_used": "329",
-          "inodes_available": "232749",
+          "inodes_used": "342",
+          "inodes_available": "232736",
           "inodes_percent_used": "1%",
           "fs_type": "devtmpfs",
           "mount_options": [
@@ -2126,12 +2413,12 @@
         },
         "/run": {
           "kb_size": "942092",
-          "kb_used": "8496",
-          "kb_available": "933596",
+          "kb_used": "8616",
+          "kb_available": "933476",
           "percent_used": "1%",
           "total_inodes": "235523",
-          "inodes_used": "381",
-          "inodes_available": "235142",
+          "inodes_used": "444",
+          "inodes_available": "235079",
           "inodes_percent_used": "1%",
           "fs_type": "tmpfs",
           "mount_options": [
@@ -2240,9 +2527,9 @@
         },
         "/vagrant": {
           "kb_size": "243915264",
-          "kb_used": "211008936",
-          "kb_available": "32906328",
-          "percent_used": "87%",
+          "kb_used": "212756964",
+          "kb_available": "31158300",
+          "percent_used": "88%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -2260,9 +2547,9 @@
         },
         "/tmp/vagrant-chef/1f2a2c5b0785596fa989818061fc9af0/roles": {
           "kb_size": "243915264",
-          "kb_used": "211008936",
-          "kb_available": "32906328",
-          "percent_used": "87%",
+          "kb_used": "212756964",
+          "kb_available": "31158300",
+          "percent_used": "88%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -2279,9 +2566,9 @@
         },
         "/tmp/vagrant-chef/c2d30df281037602653b4deb245798c1/nodes": {
           "kb_size": "243915264",
-          "kb_used": "211008936",
-          "kb_available": "32906328",
-          "percent_used": "87%",
+          "kb_used": "212756964",
+          "kb_available": "31158300",
+          "percent_used": "88%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -2298,9 +2585,9 @@
         },
         "/tmp/vagrant-chef/0d094e28dbf026ed79ca55726f6eaaf6/cookbooks": {
           "kb_size": "243915264",
-          "kb_used": "211008936",
-          "kb_available": "32906328",
-          "percent_used": "87%",
+          "kb_used": "212756964",
+          "kb_available": "31158300",
+          "percent_used": "88%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -2317,9 +2604,9 @@
         },
         "/tmp/vagrant-chef/e1cad320ccc9cde04d701476884066c8/data_bags": {
           "kb_size": "243915264",
-          "kb_used": "211008936",
-          "kb_available": "32906328",
-          "percent_used": "87%",
+          "kb_used": "212756964",
+          "kb_available": "31158300",
+          "percent_used": "88%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -2336,9 +2623,9 @@
         },
         "/tmp/vagrant-chef/61c7969d12f08aa51d709aeec81f95f0/environments": {
           "kb_size": "243915264",
-          "kb_used": "211008936",
-          "kb_available": "32906328",
-          "percent_used": "87%",
+          "kb_used": "212756964",
+          "kb_available": "31158300",
+          "percent_used": "88%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -2658,13 +2945,13 @@
         "/dev/mapper/centos-root,/": {
           "device": "/dev/mapper/centos-root",
           "kb_size": "52403200",
-          "kb_used": "1382488",
-          "kb_available": "51020712",
-          "percent_used": "3%",
+          "kb_used": "1949740",
+          "kb_available": "50453460",
+          "percent_used": "4%",
           "mount": "/",
           "total_inodes": "52428800",
-          "inodes_used": "44140",
-          "inodes_available": "52384660",
+          "inodes_used": "45093",
+          "inodes_available": "52383707",
           "inodes_percent_used": "1%",
           "fs_type": "xfs",
           "mount_options": [
@@ -2685,8 +2972,8 @@
           "percent_used": "0%",
           "mount": "/dev",
           "total_inodes": "233078",
-          "inodes_used": "329",
-          "inodes_available": "232749",
+          "inodes_used": "342",
+          "inodes_available": "232736",
           "inodes_percent_used": "1%",
           "fs_type": "devtmpfs",
           "mount_options": [
@@ -2720,13 +3007,13 @@
         "tmpfs,/run": {
           "device": "tmpfs",
           "kb_size": "942092",
-          "kb_used": "8496",
-          "kb_available": "933596",
+          "kb_used": "8616",
+          "kb_available": "933476",
           "percent_used": "1%",
           "mount": "/run",
           "total_inodes": "235523",
-          "inodes_used": "381",
-          "inodes_available": "235142",
+          "inodes_used": "444",
+          "inodes_available": "235079",
           "inodes_percent_used": "1%",
           "fs_type": "tmpfs",
           "mount_options": [
@@ -2829,9 +3116,9 @@
         "vagrant,/vagrant": {
           "device": "vagrant",
           "kb_size": "243915264",
-          "kb_used": "211008936",
-          "kb_available": "32906328",
-          "percent_used": "87%",
+          "kb_used": "212756964",
+          "kb_available": "31158300",
+          "percent_used": "88%",
           "mount": "/vagrant",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -2841,9 +3128,9 @@
         "v-csr-8f762198b,/tmp/vagrant-chef/1f2a2c5b0785596fa989818061fc9af0/roles": {
           "device": "v-csr-8f762198b",
           "kb_size": "243915264",
-          "kb_used": "211008936",
-          "kb_available": "32906328",
-          "percent_used": "87%",
+          "kb_used": "212756964",
+          "kb_available": "31158300",
+          "percent_used": "88%",
           "mount": "/tmp/vagrant-chef/1f2a2c5b0785596fa989818061fc9af0/roles",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -2859,9 +3146,9 @@
         "v-csn-0d66c3a12,/tmp/vagrant-chef/c2d30df281037602653b4deb245798c1/nodes": {
           "device": "v-csn-0d66c3a12",
           "kb_size": "243915264",
-          "kb_used": "211008936",
-          "kb_available": "32906328",
-          "percent_used": "87%",
+          "kb_used": "212756964",
+          "kb_available": "31158300",
+          "percent_used": "88%",
           "mount": "/tmp/vagrant-chef/c2d30df281037602653b4deb245798c1/nodes",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -2877,9 +3164,9 @@
         "v-csc-e8c15ffc8,/tmp/vagrant-chef/0d094e28dbf026ed79ca55726f6eaaf6/cookbooks": {
           "device": "v-csc-e8c15ffc8",
           "kb_size": "243915264",
-          "kb_used": "211008936",
-          "kb_available": "32906328",
-          "percent_used": "87%",
+          "kb_used": "212756964",
+          "kb_available": "31158300",
+          "percent_used": "88%",
           "mount": "/tmp/vagrant-chef/0d094e28dbf026ed79ca55726f6eaaf6/cookbooks",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -2895,9 +3182,9 @@
         "v-csdb-1954f2e9a,/tmp/vagrant-chef/e1cad320ccc9cde04d701476884066c8/data_bags": {
           "device": "v-csdb-1954f2e9a",
           "kb_size": "243915264",
-          "kb_used": "211008936",
-          "kb_available": "32906328",
-          "percent_used": "87%",
+          "kb_used": "212756964",
+          "kb_available": "31158300",
+          "percent_used": "88%",
           "mount": "/tmp/vagrant-chef/e1cad320ccc9cde04d701476884066c8/data_bags",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -2913,9 +3200,9 @@
         "v-cse-c8e748378,/tmp/vagrant-chef/61c7969d12f08aa51d709aeec81f95f0/environments": {
           "device": "v-cse-c8e748378",
           "kb_size": "243915264",
-          "kb_used": "211008936",
-          "kb_available": "32906328",
-          "percent_used": "87%",
+          "kb_used": "212756964",
+          "kb_available": "31158300",
+          "percent_used": "88%",
           "mount": "/tmp/vagrant-chef/61c7969d12f08aa51d709aeec81f95f0/environments",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -3228,6 +3515,22 @@
           "fs_type": "swap",
           "uuid": "39e146bb-5dd4-49a8-bd2a-79c75dcfca03"
         },
+        "/dev/loop0,": {
+          "device": "/dev/loop0",
+          "fs_type": "xfs",
+          "uuid": "f7943cf1-bb87-4d35-bae1-028ca2fd9f04"
+        },
+        "/dev/mapper/docker-253:0-68136879-pool,": {
+          "device": "/dev/mapper/docker-253:0-68136879-pool"
+        },
+        "/dev/mapper/docker-253:0-68136879-22cbc91e9457cc164c30f75e8d9a6af5e7a81cb9d79faded268b77df11ebacf8,": {
+          "device": "/dev/mapper/docker-253:0-68136879-22cbc91e9457cc164c30f75e8d9a6af5e7a81cb9d79faded268b77df11ebacf8",
+          "fs_type": "xfs",
+          "uuid": "f7943cf1-bb87-4d35-bae1-028ca2fd9f04"
+        },
+        "/dev/loop1,": {
+          "device": "/dev/loop1"
+        },
         "rootfs,/": {
           "device": "rootfs",
           "mount": "/",
@@ -3285,6 +3588,34 @@
         "rotational": "1",
         "physical_block_size": "512",
         "logical_block_size": "512"
+      },
+      "dm-3": {
+        "size": "209715200",
+        "removable": "0",
+        "rotational": "1",
+        "physical_block_size": "512",
+        "logical_block_size": "512"
+      },
+      "dm-4": {
+        "size": "20971520",
+        "removable": "0",
+        "rotational": "1",
+        "physical_block_size": "512",
+        "logical_block_size": "512"
+      },
+      "loop0": {
+        "size": "209715200",
+        "removable": "0",
+        "rotational": "1",
+        "physical_block_size": "512",
+        "logical_block_size": "512"
+      },
+      "loop1": {
+        "size": "4194304",
+        "removable": "0",
+        "rotational": "1",
+        "physical_block_size": "512",
+        "logical_block_size": "512"
       }
     },
     "fips": {
@@ -3307,14 +3638,14 @@
     "machine_id": "ae0897d2da6a458a8165f690e7378eca",
     "sessions": {
       "by_session": {
-        "4": {
-          "session": "4",
+        "2": {
+          "session": "2",
           "uid": "1000",
           "user": "vagrant",
           "seat": null
         },
-        "2": {
-          "session": "2",
+        "14": {
+          "session": "14",
           "uid": "1000",
           "user": "vagrant",
           "seat": null
@@ -3323,13 +3654,13 @@
       "by_user": {
         "vagrant": [
           {
-            "session": "4",
+            "session": "2",
             "uid": "1000",
             "user": "vagrant",
             "seat": null
           },
           {
-            "session": "2",
+            "session": "14",
             "uid": "1000",
             "user": "vagrant",
             "seat": null
@@ -3337,7 +3668,7 @@
         ]
       }
     },
-    "ohai_time": 1480589129.989523,
+    "ohai_time": 1480598679.031657,
     "packages": {
       "biosdevname": {
         "epoch": "0",
@@ -4403,11 +4734,25 @@
         "installdate": "1467235276",
         "arch": "x86_64"
       },
+      "libcgroup": {
+        "epoch": "0",
+        "version": "0.41",
+        "release": "8.el7",
+        "installdate": "1480589172",
+        "arch": "x86_64"
+      },
       "rpm-build-libs": {
         "epoch": "0",
         "version": "4.11.3",
         "release": "17.el7",
         "installdate": "1467235276",
+        "arch": "x86_64"
+      },
+      "libsemanage-python": {
+        "epoch": "0",
+        "version": "2.1.10",
+        "release": "18.el7",
+        "installdate": "1480589172",
         "arch": "x86_64"
       },
       "yum-plugin-fastestmirror": {
@@ -4417,11 +4762,25 @@
         "installdate": "1467235276",
         "arch": "noarch"
       },
+      "python-IPy": {
+        "epoch": "0",
+        "version": "0.75",
+        "release": "6.el7",
+        "installdate": "1480589172",
+        "arch": "noarch"
+      },
       "libmnl": {
         "epoch": "0",
         "version": "1.0.3",
         "release": "7.el7",
         "installdate": "1467235277",
+        "arch": "x86_64"
+      },
+      "libtool-ltdl": {
+        "epoch": "0",
+        "version": "2.4.2",
+        "release": "21.el7_2",
+        "installdate": "1480589172",
         "arch": "x86_64"
       },
       "iptables": {
@@ -4431,11 +4790,25 @@
         "installdate": "1467235277",
         "arch": "x86_64"
       },
+      "policycoreutils-python": {
+        "epoch": "0",
+        "version": "2.2.5",
+        "release": "20.el7",
+        "installdate": "1480589172",
+        "arch": "x86_64"
+      },
       "libdaemon": {
         "epoch": "0",
         "version": "0.14",
         "release": "7.el7",
         "installdate": "1467235278",
+        "arch": "x86_64"
+      },
+      "docker-engine": {
+        "epoch": "0",
+        "version": "1.12.3",
+        "release": "1.el7.centos",
+        "installdate": "1480589189",
         "arch": "x86_64"
       },
       "qrencode-libs": {
@@ -4734,9 +5107,9 @@
       },
       "gpg-pubkey": {
         "epoch": "0",
-        "version": "352c64e5",
-        "release": "52ae6884",
-        "installdate": "1467217827",
+        "version": "2c52609d",
+        "release": "55a59f6e",
+        "installdate": "1480589149",
         "arch": "(none)"
       },
       "nss-softokn-freebl": {
@@ -5642,11 +6015,25 @@
         "installdate": "1467235276",
         "arch": "x86_64"
       },
+      "audit-libs-python": {
+        "epoch": "0",
+        "version": "2.4.1",
+        "release": "5.el7",
+        "installdate": "1480589172",
+        "arch": "x86_64"
+      },
       "rpm-python": {
         "epoch": "0",
         "version": "4.11.3",
         "release": "17.el7",
         "installdate": "1467235276",
+        "arch": "x86_64"
+      },
+      "libseccomp": {
+        "epoch": "0",
+        "version": "2.2.1",
+        "release": "1.el7",
+        "installdate": "1480589172",
         "arch": "x86_64"
       },
       "yum": {
@@ -5656,11 +6043,39 @@
         "installdate": "1467235277",
         "arch": "noarch"
       },
+      "checkpolicy": {
+        "epoch": "0",
+        "version": "2.1.12",
+        "release": "6.el7",
+        "installdate": "1480589172",
+        "arch": "x86_64"
+      },
       "libnetfilter_conntrack": {
         "epoch": "0",
         "version": "1.0.4",
         "release": "2.el7",
         "installdate": "1467235277",
+        "arch": "x86_64"
+      },
+      "setools-libs": {
+        "epoch": "0",
+        "version": "3.3.7",
+        "release": "46.el7",
+        "installdate": "1480589172",
+        "arch": "x86_64"
+      },
+      "docker-engine-selinux": {
+        "epoch": "0",
+        "version": "1.12.3",
+        "release": "1.el7.centos",
+        "installdate": "1480589172",
+        "arch": "noarch"
+      },
+      "telnet": {
+        "epoch": "1",
+        "version": "0.17",
+        "release": "59.el7",
+        "installdate": "1480597756",
         "arch": "x86_64"
       },
       "wpa_supplicant": {
@@ -5815,7 +6230,7 @@
       "my_docker::default"
     ],
     "roles": [
-
+      "tomcat"
     ],
     "cookbooks": {
       "my_docker": {
@@ -5830,6 +6245,6 @@
     }
   },
   "run_list": [
-    "recipe[my_docker]"
+    "role[tomcat]"
   ]
 }
