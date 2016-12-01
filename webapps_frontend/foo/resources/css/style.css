@@ -1,0 +1,26 @@
+    .wrap {
+      margin: 0 auto;
+      text-align: center;
+      font-size: 3.7rem;
+    }
+
+    .h50 {
+      height: 50%;
+    }
+
+    .h50 p {
+      padding-top: 4rem;
+      margin-top: 0;
+    }
+
+    .hostname {
+      color: #F7412D;
+      text-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
+    }
+
+    .bg-red {
+      color: #FFFFFF;
+      text-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
+      background-color: #F7412D;
+      box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
+    }

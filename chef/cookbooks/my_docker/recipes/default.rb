@@ -19,15 +19,19 @@ end
 
 node['my_docker']['containers'].each do |mycontainer|
 
-  docker_container mycontainer['name'] do
-    tag 'latest'
-    repo node['my_docker']['image']
-    port mycontainer['ports']
-    binds [ mycontainer['files'] ]
-    host_name mycontainer['name']
-    domain_name 'dockers01.cerved.com'
-    env 'FOO=bar'
-    subscribes :redeploy, "docker_image[#{node['my_docker']['image']}]"
+  if node.roles.include? mycontainer['subscribe']
+
+    docker_container mycontainer['name'] do
+      tag 'latest'
+      repo node['my_docker']['image']
+      port mycontainer['ports']
+      binds [ mycontainer['files'] ]
+      host_name mycontainer['name']
+      domain_name 'dockers01.cerved.com'
+      env 'FOO=bar'
+      subscribes :redeploy, "docker_image[#{node['my_docker']['image']}]"
+    end
+
   end
 
 end

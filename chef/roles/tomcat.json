@@ -11,15 +11,25 @@
       "image": "tomcat",
 
       "containers": [
-        {
+        { "subscribe": "frontend",
           "name": "tomcat1",
           "ports": "8080:8080",
-          "files": "/vagrant/webapps:/usr/local/tomcat/webapps"
+          "files": "/vagrant/webapps_frontend:/usr/local/tomcat/webapps"
         },
-        {
+        { "subscribe": "backend",
           "name": "tomcat2",
           "ports": "8082:8080",
-          "files": "/vagrant/webapps:/usr/local/tomcat/webapps"
+          "files": "/vagrant/webapps_backend:/usr/local/tomcat/webapps"
+        },
+        { "subscribe": "backend",
+          "name": "tomcat3",
+          "ports": "8080:8080",
+          "files": "/vagrant/webapps_backend:/usr/local/tomcat/webapps"
+        },
+        { "subscribe": "frontend",
+          "name": "tomcat4",
+          "ports": "8082:8080",
+          "files": "/vagrant/webapps_frontend:/usr/local/tomcat/webapps"
         }
       ]
     }

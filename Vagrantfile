@@ -91,9 +91,31 @@ Vagrant.configure('2') do |config|
       chef.environments_path = './chef/environments'
 
       chef.run_list = [
+        'role[backend]',
         'role[tomcat]'
       ]
     end
-
   end
+
+  config.vm.define 'dockers02' do |dockers02|
+    dockers02.vm.hostname = 'dockers02'
+    dockers02.vm.network 'private_network', ip: '192.168.50.12'
+
+    dockers02.vm.provider 'virtualbox' do |vb|
+      vb.memory = 2048
+      vb.cpus = 1
+    end
+
+    dockers02.vm.provision :chef_zero do |chef|
+      chef.roles_path = './chef/roles'
+      chef.data_bags_path = './chef/data_bags'
+      chef.nodes_path = './chef/nodes'
+      chef.environments_path = './chef/environments'
+
+      chef.run_list = [
+        'role[frontend]',
+        'role[tomcat]'
+      ]
+  end
+ end
 end
