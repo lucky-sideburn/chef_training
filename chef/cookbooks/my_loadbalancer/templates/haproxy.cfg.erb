@@ -33,12 +33,17 @@ frontend http
   use_backend servers-backend if is_backend
   use_backend servers-frontend if is_frontend
 
+
 backend servers-frontend
-<% @containers_frontend.each do |f| %>
- server <%= f['name']%> <%= f['ip'] %>:<%= f['ports'].split(':')[0] %> check
+<% @containers_frontend.keys.each do |ip| %>
+  <% @containers_frontend[ip].each do |container| %>
+    <%= container %>
+  <% end %>
 <% end %>
 
 backend servers-backend
-<% @containers_backend.each do |b| %>
-  server <%= b['name']%> <%= b['ip'] %>:<%= b['ports'].split(':')[0] %> check
+<% @containers_backend.keys.each do |ip| %>
+  <% @containers_backend[ip].each do |container| %>
+    <%= container %>
+  <% end %>
 <% end %>

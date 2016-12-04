@@ -1,0 +1,40 @@
+{
+  "name": "cpu",
+  "description": "Manage CPU Governor on linux",
+  "long_description": "[![Cookbook Version](https://img.shields.io/cookbook/v/cpu.svg)](https://supermarket.getchef.com/cookbooks/cpu) [![Build Status](http://img.shields.io/travis/redguide/cpu/master.svg)](https://travis-ci.org/redguide/cpu)\n\n# Description\n\nManage CPU Governor on linux\n\n# Requirements\n\n## Platform:\n\n* Ubuntu\n* Debian\n\n## Cookbooks:\n\n*No dependencies defined*\n\n# Attributes\n\n* `node['cpu']['governor']` -  Defaults to `\"ondemand\"`.\n\n# Recipes\n\n* cpu::affinity\n* cpu::default\n* cpu::governor\n\n# Resources\n\n* [cpu_affinity](#cpu_affinity)\n* [cpu_nice](#cpu_nice)\n\n## cpu_affinity\n\n### Actions\n\n- set:  Default action.\n\n### Attribute Parameters\n\n- pid:\n- cpu:\n\n### Examples\n\n```\ncpu_affinity 1234 do\n  cpu 0\nend\n```\n\nSet affinity to processor 0,1,2 for process nginx\n```\ncpu_affinity 'set affinity for nginx' do\n  pid '/var/run/nginx.pid'\n  cpu '0-2'\nend\n```\n\n## cpu_nice\n\n### Actions\n\n- set:  Default action.\n\n### Attribute Parameters\n\n- pid:\n- priority:\n\n### Examples\n\n```\ncpu_nice 1234 do\n  priority 12\nend\n```\n\n```\ncpu_nice 'set affinity for nginx' do\n  pid '/var/run/nginx.pid'\n  priority 19\nend\n```\n\n# License and Maintainer\n\nMaintainer:: Guilhem Lettron (<guilhem.lettron@youscribe.com>)\n\nLicense:: Apache v2.0\n",
+  "maintainer": "Guilhem Lettron",
+  "maintainer_email": "guilhem@lettron.fr",
+  "license": "Apache v2.0",
+  "platforms": {
+    "ubuntu": ">= 0.0.0",
+    "debian": ">= 0.0.0"
+  },
+  "dependencies": {
+
+  },
+  "recommendations": {
+
+  },
+  "suggestions": {
+
+  },
+  "conflicting": {
+
+  },
+  "providing": {
+
+  },
+  "replacing": {
+
+  },
+  "attributes": {
+
+  },
+  "groupings": {
+
+  },
+  "recipes": {
+
+  },
+  "version": "1.0.0"
+}

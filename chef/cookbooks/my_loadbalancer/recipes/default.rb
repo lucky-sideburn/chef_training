@@ -13,31 +13,31 @@ service 'haproxy' do
   action [:enable, :start]
 end
 
-
 frontends = search(:node, 'roles:frontend')
 backends = search(:node, 'roles:backend')
 
-containers_frontend = Array.new
-containers_backend = Array.new
+containers_frontend = Hash.new
+containers_backend = Hash.new
 
 frontends.each do |f|
- f['my_docker']['containers'].each do |container|
-  if container['subscribe'] == 'frontend'
-    container['ip'] = f['address_for_vagrant']
-    containers_frontend.push(container)
+  internal_ip = f['network']['interfaces']['enp0s8']['addresses'].keys[1]
+  containers_frontend[internal_ip] = Array.new
+  f['my_docker']['containers'].each do |container|
+    if container['subscribe'] == 'frontend'
+      containers_frontend[internal_ip].push("server #{container['name']} #{internal_ip}:#{container['ports'].split(':')[0]} check")
+    end
   end
- end
 end
 
 backends.each do |b|
- b['my_docker']['containers'].each do |container|
-  if container['subscribe'] == 'backend'
-    container['ip'] = b['address_for_vagrant']
-    containers_backend.push(container)
+  internal_ip = b['network']['interfaces']['enp0s8']['addresses'].keys[1]
+  containers_backend[internal_ip] = Array.new
+  b['my_docker']['containers'].each do |container|
+    if container['subscribe'] == 'backend'
+      containers_backend[internal_ip].push("server #{container['name']} #{internal_ip}:#{container['ports'].split(':')[0]} check")
+    end
   end
- end
 end
-
 
 template '/etc/haproxy/haproxy.cfg' do
   source 'haproxy.cfg.erb'

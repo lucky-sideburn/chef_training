@@ -4,10 +4,11 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
+
 docker_service 'default' do
   action [:create, :start]
-  http_proxy 'http://proxy.cervedgroup.com:8080'
-  https_proxy 'http://proxy.cervedgroup.com:8080'
+  http_proxy node['my_docker']['proxy']
+  https_proxy node['my_docker']['proxy']
   no_proxy 'localhost,127.0.0.1'
 end
 
@@ -16,13 +17,6 @@ docker_image node['my_docker']['image'] do
   tag 'latest'
   action :pull
 end
-
-docker_network 'my_network' do
-  subnet '192.168.50.0/24'
-  gateway '192.168.50.1'
-  driver 'overlay'
-end
-
 
 node['my_docker']['containers'].each do |mycontainer|
 
@@ -35,7 +29,6 @@ node['my_docker']['containers'].each do |mycontainer|
       binds [ mycontainer['files'] ]
       host_name mycontainer['name']
       domain_name 'dockers01.cerved.com'
-      network_mode 'my_network'
       env 'FOO=bar'
       subscribes :redeploy, "docker_image[#{node['my_docker']['image']}]"
     end
@@ -43,5 +36,3 @@ node['my_docker']['containers'].each do |mycontainer|
   end
 
 end
-
-

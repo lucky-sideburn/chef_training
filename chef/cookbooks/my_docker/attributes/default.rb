@@ -8,5 +8,5 @@ default['my_docker']['containers'] = [
       "files" => "/vagrant/webapps:/usr/local/tomcat/webapps"
   }
 ]
-
+default['mydocker']['proxy'] = false
 default['my_docker']['files'] = '/some/local/files/:/etc/nginx/conf.d'

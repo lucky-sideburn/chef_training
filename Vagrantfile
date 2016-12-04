@@ -13,7 +13,6 @@ Vagrant.configure('2') do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = 'geerlingguy/centos7'
-  config.berkshelf.enabled = true
 
   if ENV['PROXYPLEASE']
     myproxy = 'http://proxy.cervedgroup.com:8080'
@@ -92,6 +91,7 @@ Vagrant.configure('2') do |config|
       chef.roles_path = './chef/roles'
       chef.data_bags_path = './chef/data_bags'
       chef.nodes_path = './chef/nodes'
+      chef.cookbooks_path = './chef/cookbooks'
       chef.environments_path = './chef/environments'
 
       chef.run_list = [
@@ -117,6 +117,7 @@ Vagrant.configure('2') do |config|
       chef.data_bags_path = './chef/data_bags'
       chef.nodes_path = './chef/nodes'
       chef.environments_path = './chef/environments'
+      chef.cookbooks_path = './chef/cookbooks'
 
       chef.run_list = [
         'role[frontend]',
@@ -141,6 +142,7 @@ Vagrant.configure('2') do |config|
       chef.data_bags_path = './chef/data_bags'
       chef.nodes_path = './chef/nodes'
       chef.environments_path = './chef/environments'
+      chef.cookbooks_path = './chef/cookbooks'
 
       chef.run_list = [
        "role[my_loadbalancer]"
