@@ -14,7 +14,7 @@
 
 - Per il docker_service valorizzare node['my_docker']['proxy'] nel caso si utilizzi un proxy
 
-### Argomenti ##d#
+### Argomenti
 - overview tool Devops
 - overview metodologie Devops
 - overview risorsa Chef Docker
@@ -26,12 +26,11 @@
 
 ### Web URLs
 
-Inserire record DNS:
-192.168.50.13 backend.com frontend.com
+- Inserire record DNS: 192.168.50.13 backend.com frontend.com
 
-http://localhost:5555/ (HaProxy Stats Console)
-http://frontend.com/foo/ (frontend web-app)
-http://backend.com/hello-world/ (backend web-app)
+- http://localhost:5555/ (HaProxy Stats Console)
+- http://frontend.com/foo/ (frontend web-app)
+- http://backend.com/hello-world/ (backend web-app)
 
 ### Tool utilizati ###
 1. Vagrant (vm provisioner)
