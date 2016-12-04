@@ -15,10 +15,12 @@ Vagrant.configure('2') do |config|
   config.vm.box = 'geerlingguy/centos7'
   config.berkshelf.enabled = true
 
-  myproxy = 'http://proxy.cervedgroup.com:8080'
-  config.proxy.http     = myproxy
-  config.proxy.https    = myproxy
-  config.proxy.no_proxy = 'localhost,127.0.0.1,.example.com'
+  if ENV['PROXYPLEASE']
+    myproxy = 'http://proxy.cervedgroup.com:8080'
+    config.proxy.http     = myproxy
+    config.proxy.https    = myproxy
+    config.proxy.no_proxy = 'localhost,127.0.0.1,.example.com'
+  end
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -78,6 +80,8 @@ Vagrant.configure('2') do |config|
   config.vm.define 'dockers01' do |dockers01|
     dockers01.vm.hostname = 'dockers01'
     dockers01.vm.network 'private_network', ip: '192.168.50.11'
+    #config.vm.network "forwarded_port", guest: 8080, host: 9090, guest_ip: "172.17.0.1"
+    #config.vm.network "forwarded_port", guest: 8082, host: 9092, guest_ip: "172.17.0.1"
 
     dockers01.vm.provider 'virtualbox' do |vb|
       vb.memory = 2048
@@ -100,6 +104,8 @@ Vagrant.configure('2') do |config|
   config.vm.define 'dockers02' do |dockers02|
     dockers02.vm.hostname = 'dockers02'
     dockers02.vm.network 'private_network', ip: '192.168.50.12'
+    #config.vm.network "forwarded_port", guest: 8080, host: 8080, guest_ip: "172.17.0.1"
+    #config.vm.network "forwarded_port", guest: 8082, host: 8082, guest_ip: "172.17.0.1"
 
     dockers02.vm.provider 'virtualbox' do |vb|
       vb.memory = 2048
@@ -118,4 +124,32 @@ Vagrant.configure('2') do |config|
       ]
   end
  end
+
+
+  config.vm.define 'frontend01' do |frontend01|
+    frontend01.vm.hostname = 'frontend01'
+    frontend01.vm.network 'private_network', ip: '192.168.50.13'
+    config.vm.network "forwarded_port", guest: 22002, host: 5555
+
+    frontend01.vm.provider 'virtualbox' do |vb|
+      vb.memory = 2048
+      vb.cpus = 1
+    end
+
+    frontend01.vm.provision :chef_zero do |chef|
+      chef.roles_path = './chef/roles'
+      chef.data_bags_path = './chef/data_bags'
+      chef.nodes_path = './chef/nodes'
+      chef.environments_path = './chef/environments'
+
+      chef.run_list = [
+       "role[my_loadbalancer]"
+      ]
+  end
+ end
+
+
+
+
+
 end

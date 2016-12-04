@@ -5,6 +5,7 @@
 - overview tool evops
 - overview metodologie Devops
 - overview risorsa Chef Docker
+/usr/local/tomcat/webapps
 
 ### Cosa realizzeremo? ###
 Effettueremo il deploy della seguente piattaforma

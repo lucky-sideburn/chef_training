@@ -12,24 +12,24 @@
 
       "containers": [
         { "subscribe": "frontend",
-          "name": "tomcat1",
+          "name": "tomcat-fronted-1",
           "ports": "8080:8080",
           "files": "/vagrant/webapps_frontend:/usr/local/tomcat/webapps"
-        },
-        { "subscribe": "backend",
-          "name": "tomcat2",
-          "ports": "8082:8080",
-          "files": "/vagrant/webapps_backend:/usr/local/tomcat/webapps"
-        },
-        { "subscribe": "backend",
-          "name": "tomcat3",
-          "ports": "8080:8080",
-          "files": "/vagrant/webapps_backend:/usr/local/tomcat/webapps"
         },
         { "subscribe": "frontend",
-          "name": "tomcat4",
+          "name": "tomcat-frontend-2",
           "ports": "8082:8080",
           "files": "/vagrant/webapps_frontend:/usr/local/tomcat/webapps"
+        },
+        { "subscribe": "backend",
+          "name": "tomcat-backend-1",
+          "ports": "8082:8080",
+          "files": "/vagrant/webapps_backend:/usr/local/tomcat/webapps"
+        },
+        { "subscribe": "backend",
+          "name": "tomcat-backend-2",
+          "ports": "8080:8080",
+          "files": "/vagrant/webapps_backend:/usr/local/tomcat/webapps"
         }
       ]
     }

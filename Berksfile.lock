@@ -1,11 +1,33 @@
 DEPENDENCIES
   docker (~> 2.0)
+  haproxy
   my_docker
     path: chef/cookbooks/my_docker
+  my_loadbalancer
+    path: chef/cookbooks/my_loadbalancer
 
 GRAPH
+  build-essential (7.0.2)
+    compat_resource (>= 12.14)
+    mingw (>= 1.1)
+    seven_zip (>= 0.0.0)
   compat_resource (12.16.2)
+  cpu (1.0.0)
   docker (2.13.0)
     compat_resource (>= 12.16.2)
+  haproxy (2.0.0)
+    build-essential (>= 0.0.0)
+    cpu (>= 0.2.0)
+  mingw (1.2.4)
+    compat_resource (>= 0.0.0)
+    seven_zip (>= 0.0.0)
   my_docker (0.1.0)
     docker (>= 0.0.0)
+  my_loadbalancer (0.1.0)
+    haproxy (>= 0.0.0)
+  ohai (4.2.2)
+    compat_resource (>= 12.14)
+  seven_zip (2.0.2)
+    windows (>= 1.2.2)
+  windows (2.1.1)
+    ohai (>= 4.0.0)

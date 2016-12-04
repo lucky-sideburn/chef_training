@@ -1,0 +1,14 @@
+{
+  "name": "my_loadbalancer",
+  "description": "...",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[my_loadbalancer]"
+  ],
+  "env_run_lists": {
+
+  }
+}

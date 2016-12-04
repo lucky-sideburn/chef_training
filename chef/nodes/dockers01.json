@@ -1295,6 +1295,7 @@
       }
     },
     "ipaddress": "10.0.2.15",
+    "ipaddress_for_vagrant": "192.168.50.11",
     "macaddress": "08:00:27:F7:90:B3",
     "ip6address": "fe80::42:e2ff:fe6f:d0d9",
     "os": "linux",

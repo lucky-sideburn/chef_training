@@ -17,6 +17,13 @@ docker_image node['my_docker']['image'] do
   action :pull
 end
 
+docker_network 'my_network' do
+  subnet '192.168.50.0/24'
+  gateway '192.168.50.1'
+  driver 'overlay'
+end
+
+
 node['my_docker']['containers'].each do |mycontainer|
 
   if node.roles.include? mycontainer['subscribe']
@@ -28,6 +35,7 @@ node['my_docker']['containers'].each do |mycontainer|
       binds [ mycontainer['files'] ]
       host_name mycontainer['name']
       domain_name 'dockers01.cerved.com'
+      network_mode 'my_network'
       env 'FOO=bar'
       subscribes :redeploy, "docker_image[#{node['my_docker']['image']}]"
     end
